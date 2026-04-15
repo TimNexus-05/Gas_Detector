@@ -1,4 +1,4 @@
-# Methane Gas Detector README
+# Methane Gas Detector 
 
 ## Overview
 
