@@ -1,4 +1,4 @@
-<img width="453" height="398" alt="image" src="https://github.com/user-attachments/assets/92316517-efc7-4414-b0bc-b58264082202" /># 🛠️ Hardware Branch – Gas Detection System (ESP32-C3)
+ 🛠️ Hardware Branch – Gas Detection System (ESP32-C3)
 
 This branch documents the physical and simulated hardware setup for the Gas Detection System using ESP32-C3, MQ2 gas sensor, OLED display, buzzer, and LED indicators.
 
@@ -112,7 +112,7 @@ This hardware design prioritizes:
 - Simplicity for simulation (Wokwi)
 - Clear separation between simulation vs real-world deployment
 - Easy migration path to physical ESP32 hardware
-<img width="453" height="398" alt="Screenshot From 2026-04-15 16-50-05" src="https://github.com/user-attachments/assets/ff96b95e-7b15-4ef5-956d-a192d130a0b1" />
+
 
 ---
 
@@ -124,4 +124,10 @@ This branch focuses ONLY on:
 - Pin assignments
 - Sensor power logic
 - Hardware-level constraints
+
+<img width="453" height="398" alt="Screenshot From 2026-04-15 16-50-05" src="https://github.com/user-attachments/assets/ff96b95e-7b15-4ef5-956d-a192d130a0b1" />
+
+## Author
+-Tim Wekesa
+  
 
