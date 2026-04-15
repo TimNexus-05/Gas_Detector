@@ -26,5 +26,4 @@ A simple embedded system that detects gas levels using an MQ-2 sensor, displays 
 - `hardware` → circuit design & wiring  
 - `features` → active development  
 
-## License
-MIT
+
