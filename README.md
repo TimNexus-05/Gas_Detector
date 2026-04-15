@@ -38,3 +38,6 @@ The system responds based on methane concentration levels as follows:
 | < 40%            | SAFE     | Off                  |
 | 40% – 70%        | WARNING  | Intermittent Beeping |
 | > 70%            | DANGER   | Continuous Buzz      |
+
+##  Author
+# BRIAN MARUGA MUTHONI
