@@ -6,14 +6,19 @@ import ssd1306
 # MQ2 SENSOR
 # -------------------
 mq2 = ADC(Pin(3))
-mq2.atten(ADC.ATTN_11DB)  # allows full 0–3.3V range
-mq2.width(ADC.WIDTH_12BIT)
+mq2.atten(ADC.ATTN_11DB)
+mq2.width(ADC.WIDTH_12BIT)  # 0 - 4095
 
 # -------------------
 # BUZZER
 # -------------------
 buzzer = PWM(Pin(2))
 buzzer.duty(0)
+
+# -------------------
+# LED (DANGER INDICATOR)
+# -------------------
+led = Pin(6, Pin.OUT)   # change pin if needed
 
 # -------------------
 # OLED DISPLAY
@@ -31,41 +36,52 @@ def beep(freq=1000, duty=512):
 def silent():
     buzzer.duty(0)
 
-def get_status(value):
-    if value < 1500:
+def get_status(percent):
+    if percent < 40:
         return "SAFE"
-    elif value < 2500:
+    elif percent < 70:
         return "WARNING"
     else:
         return "DANGER"
+
+def to_percent(value):
+    return int((value / 4095) * 100)
 
 # -------------------
 # MAIN LOOP
 # -------------------
 while True:
-    gas_value = mq2.read()
-    status = get_status(gas_value)
+    raw = mq2.read()
+    percent = to_percent(raw)
+    status = get_status(percent)
 
-    print("Gas:", gas_value, "Status:", status)
+    print("Raw:", raw, "Percent:", percent, "%", "Status:", status)
 
     # ---------------- OLED ----------------
     oled.fill(0)
     oled.text("GAS MONITOR", 0, 0)
-    oled.text("Value: {}".format(gas_value), 0, 20)
+    oled.text("Value: {}%".format(percent), 0, 20)
     oled.text("Status: {}".format(status), 0, 40)
     oled.show()
 
     # ---------------- ALERT LOGIC ----------------
     if status == "SAFE":
         silent()
+        led.value(0)
 
     elif status == "WARNING":
+        led.value(0)
         beep(800)
         time.sleep(0.2)
         silent()
 
-    else:  # DANGER
+    else:  # DANGER 🔥
         beep(1500)
+
+        # LED blinking
+        led.value(1)
+        time.sleep(0.1)
+        led.value(0)
         time.sleep(0.1)
 
-    time.sleep(0.5)
+    time.sleep(0.3)
