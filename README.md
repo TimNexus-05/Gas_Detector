@@ -1,7 +1,7 @@
 # Methane Gas Detector System with an Alarming System
 
 ## Overview
-A simple embedded system that detects gas levels using an MQ-2 sensor, displays the status on an OLED screen, and triggers a buzzer when unsafe levels are reached.
+A simple embedded system that detects gas levels using an MQ-2 sensor, displays the status on an OLED screen  and triggers a buzzer when unsafe levels are reached.
 
 ## Features
 - Gas level monitoring (MQ-2)
