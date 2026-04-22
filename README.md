@@ -11,22 +11,30 @@
 
 ## Components of the project
  ESP32 board.  
- Sensor.  
+ MQ2 Sensor.  
  Buzzer.  
  Leds (red and green).  
  Resistors.  
  Connecting wires.  
- display.  
+ display. 
+ capacitor - low pass filter
 
 ## Pin layout
 
-| Component        | ESP32 Pin | Description                  |
+| Component        | signal |ESP32 pin                 |
 |------------------|----------|------------------------------|
-| MQ-2 Sensor      | GPIO3   | Analog input (ADC)           |
-| Buzzer           | GPIO2   | Alarm output                 |
-| Red LED          | GPIO6    | Danger indicator             |
-| GND              | GND      | Common ground for all parts  |
-| VCC (Sensor)     | 5V       | Power supply for MQ-4        |
+| MQ-2 Sensor      | A1 pin   | GPIO3 (ADC)          |
+| MQ-2 sensor      | B2 pin   | 5V                    |  
+| MQ-2 sensor      | H1 pin   | 5V(heater)            |  
+| MQ-2 sensor      | H2 pin   | GND                   |  
+| OLED display            | SDA      | GPIO4                 |  
+| OLED display            | SCL      | GPIO5                |  
+| OLED display            | GND       | GND
+| Buzzer           | Signal   | GPIO0                |
+| Buzzer           | GND      | GND               |
+| Red LED          | Anode    | GPIO6             |
+| Blue LED         | Anode    | GPIO2             |
+| Green LED        | Anode    | GPIO7             |
 
 ## How It Works
 The MQ-2 sensor outputs an analog signal proportional to methane concentration.
@@ -34,21 +42,16 @@ The ESP32 reads this signal using its ADC pin.
 
 The system compares the value to a threshold:
 
-- If gas <40% shows SAFE
+- If gas <4% shows SAFE
   - Green LED ON
   - Buzzer OFF
     
-- If methane level is between 40%-70% Gives a WARNING    
+- If methane level is between 4%-10% Gives a WARNING
+  -Blue led ON
 
-- If gas ≥70% shows DANGER
-  - Red LED ON
+- If gas ≥10% shows DANGER
+  - Red and blue LED ON
   - Buzzer ON
 
-## Sample Output
-Methane Level: 20%
-Status: SAFE
-
-Methane Level: 80%   
-Status: DANGER
 
 ## Author {Kelvin Karong'e}
