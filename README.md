@@ -14,6 +14,7 @@ The hardware system detects combustible gases (LPG, methane, smoke) using an MQ2
 - Buzzer (audio alarm)
 - LED indicators (visual status)
 - ESP32-C3 (central controller)
+- Low pass filter (ceramic capacitor)
 
 ---
 
@@ -26,8 +27,10 @@ The hardware system detects combustible gases (LPG, methane, smoke) using an MQ2
 | MQ2 Sensor | GND | GND |
 | OLED Display | SDA | GPIO 4 |
 | OLED Display | SCL | GPIO 5 |
-| Buzzer | Signal | GPIO 6 |
-| Red LED | Anode | GPIO 7 |
+| Buzzer | Signal | GPIO 0 |
+| Red LED | Anode | GPIO 6 |
+|Green LED| Anode |GPIO 7|
+|Blue LED| Anode|GPIO2|
 
 
 ---
@@ -47,20 +50,8 @@ The hardware system detects combustible gases (LPG, methane, smoke) using an MQ2
 - No risk of damaging ESP32 in simulation
 - Simplifies circuit design for learning and testing
 
----
 
-## ⚠️ Real Hardware Warning (IMPORTANT)
-
-If moving to physical hardware:
-
-- MQ2 AO can output up to ~5V
-- ESP32-C3 ADC max input is ~3.3V
-- You MUST use a voltage divider:
-
-Example:
-- R1 = 10kΩ
-- R2 = 20kΩ
-
+-in real hardware we used 2 10k resistors to scale down the 5v output .
 This scales 5V → ~3.3V safe input
 
 ---
