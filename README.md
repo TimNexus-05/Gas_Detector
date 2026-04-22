@@ -92,7 +92,8 @@ This scales 5V → ~3.3V safe input
 | Condition | LED | Buzzer | OLED |
 |----------|-----|--------|------|
 | Safe | Green ON | OFF | “SAFE” |
-| Warning | Red ON | ON (PWM beep) | “DANGER” |
+| Warning | Blue  ON | ON (PWM beep  intermitent beep) | 
+|“DANGER” |Red and Blue on ,alternating|buzzer on| Continous beep|
 
 ---
 
@@ -126,6 +127,12 @@ This branch focuses ONLY on:
 - Hardware-level constraints
 
 <img width="453" height="398" alt="Screenshot From 2026-04-15 16-50-05" src="https://github.com/user-attachments/assets/ff96b95e-7b15-4ef5-956d-a192d130a0b1" />
+
+<img width="1057" height="1401" alt="image" src="https://github.com/user-attachments/assets/299d0c15-8b75-45b0-8901-38351e501e1d" />
+
+
+
+
 
 ## Author
 -Tim Wekesa
